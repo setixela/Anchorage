@@ -104,6 +104,35 @@ public extension Anchors {
 		return self
 	}
 
+   @discardableResult
+   func maxWidth(_ width: CGFloat) -> Anchors {
+      let anchor = view.widthAnchor.constraint(lessThanOrEqualToConstant: width)
+      anchors.append(anchor)
+      return self
+   }
+
+   @discardableResult
+   func maxHeight(_ height: CGFloat) -> Anchors {
+      let anchor = view.heightAnchor.constraint(lessThanOrEqualToConstant: height)
+      anchors.append(anchor)
+      return self
+   }
+
+   @discardableResult
+   func minWidth(_ width: CGFloat) -> Anchors {
+      let anchor = view.widthAnchor.constraint(greaterThanOrEqualToConstant: width)
+      anchors.append(anchor)
+      return self
+   }
+
+   @discardableResult
+   func minHeight(_ height: CGFloat) -> Anchors {
+      let anchor = view.heightAnchor.constraint(greaterThanOrEqualToConstant: height)
+      anchors.append(anchor)
+      return self
+   }
+
+
 	@discardableResult
 	func constSquare(size: CGFloat) -> Anchors {
 		let widthAnchor = view.widthAnchor.constraint(equalToConstant: size)

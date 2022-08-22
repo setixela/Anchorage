@@ -17,36 +17,36 @@ import UIKit
 ///				.snapToTop(view, constHeight: 100, offset: 16, sideOffset: 16)
 
 public final class Anchors {
-
    unowned var view: UIView
 
    var anchors: [NSLayoutConstraint?] = []
 
-	init(view: UIView) {
-		self.view = view
-	}
+   init(view: UIView) {
+      self.view = view
+   }
 
    public func constraint() -> NSLayoutConstraint? {
-		guard let lastAnchor = anchors.last else { return nil }
-		return lastAnchor
-	}
+      guard let lastAnchor = anchors.last else { return nil }
+      return lastAnchor
+   }
 
-	deinit {
-		apply()
-	}
+   deinit {
+      apply()
+   }
 
-	private func apply() {
-		view.translatesAutoresizingMaskIntoConstraints = false
-		let constraints = anchors.compactMap { $0 }
-		NSLayoutConstraint.activate(constraints)
-	}
+   private func apply() {
+      view.translatesAutoresizingMaskIntoConstraints = false
+      let constraints = anchors.compactMap { $0 }
+
+      NSLayoutConstraint.activate(constraints)
+   }
 }
 
 // MARK: - UIView.addAnchors...
 
 public extension UIView {
-	var addAnchors: Anchors {
-		let anchorType = Anchors(view: self)
-		return anchorType
-	}
+   var addAnchors: Anchors {
+      let anchorType = Anchors(view: self)
+      return anchorType
+   }
 }
