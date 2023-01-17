@@ -49,4 +49,17 @@ public extension UIView {
       let anchorType = Anchors(view: self)
       return anchorType
    }
+
+   @discardableResult
+   func addToSuperview(_ superView: UIView?) -> Anchors {
+      superView?.addSubview(self)
+      return addAnchors
+   }
+
+   @discardableResult
+   func insertToSuperview(_ superView: UIView?, at index: Int = 0) -> Anchors {
+      superView?.insertSubview(self, at: index)
+      return addAnchors
+   }
 }
+
