@@ -132,7 +132,6 @@ public extension Anchors {
       return self
    }
 
-
 	@discardableResult
 	func constSquare(size: CGFloat) -> Anchors {
 		let widthAnchor = view.widthAnchor.constraint(equalToConstant: size)
@@ -141,6 +140,15 @@ public extension Anchors {
 		anchors.append(heightAnchor)
 		return self
 	}
+
+    @discardableResult
+    func constSize(_ x: CGFloat, _ y: CGFloat) -> Anchors {
+        let widthAnchor = view.widthAnchor.constraint(equalToConstant: x)
+        let heightAnchor = view.heightAnchor.constraint(equalToConstant: y)
+        anchors.append(widthAnchor)
+        anchors.append(heightAnchor)
+        return self
+    }
 }
 
 // MARK: - Special

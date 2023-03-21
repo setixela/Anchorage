@@ -30,6 +30,11 @@ public final class Anchors {
       return lastAnchor
    }
 
+   public func unsafeConstraint() -> NSLayoutConstraint {
+      guard let lastAnchor = anchors.last! else { return { fatalError() }() }
+      return lastAnchor
+   }
+
    deinit {
       apply()
    }
