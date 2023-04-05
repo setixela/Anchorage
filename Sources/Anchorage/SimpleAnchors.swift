@@ -160,4 +160,11 @@ public extension Anchors {
 		lastAnchor??.priority = UILayoutPriority(priority)
 		return self
 	}
+
+   @discardableResult
+   func priority(_ priority: UILayoutPriority) -> Anchors {
+      let lastAnchor = anchors.last
+      lastAnchor??.priority = priority
+      return self
+   }
 }
